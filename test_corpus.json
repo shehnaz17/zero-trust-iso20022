@@ -1,0 +1,118 @@
+{
+  "description": "Synthetic pacs.008 test corpus for sanctions screening evaluation",
+  "total_transactions": 10,
+  "sanctioned_count": 3,
+  "clear_count": 7,
+  "transactions": [
+    {
+      "id": "TXN001",
+      "expected": "HOLD",
+      "payment": {
+        "cdtr": "John Doe",
+        "dbtr": "Alice Corporation",
+        "ultmtDbtr": "Bob Industries",
+        "instgAgt": "DEUTDEDB",
+        "instdAgt": "CHASUS33"
+      }
+    },
+    {
+      "id": "TXN002",
+      "expected": "HOLD",
+      "payment": {
+        "cdtr": "Ahmad Al-Rashid",
+        "dbtr": "Global Trading Ltd",
+        "ultmtDbtr": "Pacific Holdings",
+        "instgAgt": "BNPAFRPP",
+        "instdAgt": "BARCGB22"
+      }
+    },
+    {
+      "id": "TXN003",
+      "expected": "HOLD",
+      "payment": {
+        "cdtr": "Viktar Piatrof",
+        "dbtr": "Eastern Europe LLC",
+        "ultmtDbtr": "Northern Trade Co",
+        "instgAgt": "CITIUS33",
+        "instdAgt": "DEUTDEDB"
+      }
+    },
+    {
+      "id": "TXN004",
+      "expected": "CLEAR",
+      "payment": {
+        "cdtr": "Sarah Johnson",
+        "dbtr": "Tech Solutions Inc",
+        "ultmtDbtr": "Digital Services Co",
+        "instgAgt": "CHASUS33",
+        "instdAgt": "BOFAUS3N"
+      }
+    },
+    {
+      "id": "TXN005",
+      "expected": "CLEAR",
+      "payment": {
+        "cdtr": "Michael Brown",
+        "dbtr": "Finance Corp",
+        "ultmtDbtr": "Investment Group",
+        "instgAgt": "BARCGB22",
+        "instdAgt": "BNPAFRPP"
+      }
+    },
+    {
+      "id": "TXN006",
+      "expected": "CLEAR",
+      "payment": {
+        "cdtr": "Emma Wilson",
+        "dbtr": "Trading Partners Ltd",
+        "ultmtDbtr": "Global Commerce Inc",
+        "instgAgt": "HSBCGB2L",
+        "instdAgt": "CITIUS33"
+      }
+    },
+    {
+      "id": "TXN007",
+      "expected": "CLEAR",
+      "payment": {
+        "cdtr": "James Taylor",
+        "dbtr": "Export Holdings",
+        "ultmtDbtr": "Pacific Trade Co",
+        "instgAgt": "BOFAUS3N",
+        "instdAgt": "CHASUS33"
+      }
+    },
+    {
+      "id": "TXN008",
+      "expected": "CLEAR",
+      "payment": {
+        "cdtr": "Lisa Anderson",
+        "dbtr": "Import Solutions",
+        "ultmtDbtr": "Continental Corp",
+        "instgAgt": "DEUTDEDB",
+        "instdAgt": "BARCGB22"
+      }
+    },
+    {
+      "id": "TXN009",
+      "expected": "CLEAR",
+      "payment": {
+        "cdtr": "David Martinez",
+        "dbtr": "South America Trade",
+        "ultmtDbtr": "Latin Holdings",
+        "instgAgt": "BNPAFRPP",
+        "instdAgt": "HSBCGB2L"
+      }
+    },
+    {
+      "id": "TXN010",
+      "expected": "CLEAR",
+      "payment": {
+        "cdtr": "Sophie Chen",
+        "dbtr": "Asia Pacific Ltd",
+        "ultmtDbtr": "Far East Trading",
+        "instgAgt": "CITIUS33",
+        "instdAgt": "BOFAUS3N"
+      }
+    }
+  ]
+}
