@@ -22,6 +22,11 @@ pip install jellyfish
 ## Usage
 python screening.py
 
+## Note on Test Corpus
+The repository includes a representative sample of the synthetic test corpus. 
+The full corpus of 10,000 transactions used in the paper evaluation is available 
+upon request.
+
 ## Disclaimer
 All test data is completely synthetic.
 No real payment data is included.
