@@ -1,0 +1,121 @@
+# Zero Trust Micro-Segmentation Policy
+# ISO 20022 Payment Network Zones
+# Kubernetes NetworkPolicy Configuration
+
+# Zone 1: Originating Bank Zone
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: originating-zone-policy
+  namespace: originating-zone
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              zone: clearing
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              zone: clearing
+      ports:
+        - protocol: TCP
+          port: 443
+    # Block direct to beneficiary
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              zone: compliance
+      ports:
+        - protocol: TCP
+          port: 443
+
+---
+# Zone 2: Clearing Zone
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: clearing-zone-policy
+  namespace: clearing-zone
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              zone: originating
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              zone: clearing
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              zone: beneficiary
+      ports:
+        - protocol: TCP
+          port: 443
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              zone: compliance
+      ports:
+        - protocol: TCP
+          port: 443
+
+---
+# Zone 3: Beneficiary Zone
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: beneficiary-zone-policy
+  namespace: beneficiary-zone
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              zone: clearing
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              zone: compliance
+      ports:
+        - protocol: TCP
+          port: 443
+
+---
+# Zone 4: Compliance Zone
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: compliance-zone-policy
+  namespace: compliance-zone
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    # Only camt.056 messages allowed
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              message-type: camt.056
+  egress:
+    # No outbound payment zone connections
+    - to: []
